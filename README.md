@@ -68,9 +68,9 @@ Bu projede, küçük bir film veritabanı içeren bir web uygulamasında çalı�
 
 - [???] **Film işlevlerinizin artık çalışmadığına dikkat edin. Neden?** Film reducera bağlı bileşenin tekrar çalışmasını sağlamak için gerekli değişiklikleri yapın.
 
-- [ ] Store içerisinden `favorites` değerini FavoriteMovieList bileşenine bağlayın ve test edin. (ipucu: yine useSelector kullanın)
+- [x] Store içerisinden `favorites` değerini FavoriteMovieList bileşenine bağlayın ve test edin. (ipucu: yine useSelector kullanın)
 
-- [ ] DisplayFavorites değerini store içerisinden çekerek Movie ve MovieHeader bileşeninde ilgili yerlerde kullanın.
+- [x] DisplayFavorites değerini store içerisinden çekerek Movie ve MovieHeader bileşeninde ilgili yerlerde kullanın.
 
 #### Favoriler eylemleri ekleyin
 

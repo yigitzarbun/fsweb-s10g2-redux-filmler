@@ -10,9 +10,10 @@ import "./index.css";
 import { legacy_createStore as createStore } from "redux";
 import { Provider } from "react-redux";
 import rootReducer from "./reducers/";
-import reducer from "./reducers";
+//import movieReducer from "./reducers/";
+//import reducer from "./reducers";
 
-const store = createStore(reducer);
+const store = createStore(rootReducer);
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>

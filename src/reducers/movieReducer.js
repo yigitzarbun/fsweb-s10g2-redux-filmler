@@ -22,7 +22,6 @@ const reducer = (state = initialState, action) => {
         genre: action.payload.genre,
         description: action.payload.description,
       };
-      console.log(action.payload);
       const newMovies = [...state.movies, newMovie];
 
       return {
