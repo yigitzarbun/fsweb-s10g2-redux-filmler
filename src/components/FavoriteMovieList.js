@@ -9,6 +9,7 @@ const FavoriteMovieList = (props) => {
   const { push } = useHistory();
   const dispatch = useDispatch();
   const favorites = useSelector((store) => store.favouriteReducer.favorites);
+
   const handleRemove = (id) => {
     dispatch(removeFavorite(id));
     push("/movies");
@@ -25,6 +26,7 @@ const FavoriteMovieList = (props) => {
             to={`/movies/${movie.id}`}
           >
             {movie.title}
+
             <span
               className="material-icons hover:text-red-600 text-[18px]"
               onClick={() => handleRemove(movie.id)}

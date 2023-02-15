@@ -21,14 +21,14 @@ const MovieList = (props) => {
           </thead>
 
           <tbody className="text-sm">
-            {movies.map((movie) => (
-              <MovieListItem key={movie.id} movie={movie} />
-            ))}
+            {Array.isArray(movies) &&
+              movies.map((movie) => (
+                <MovieListItem key={movie.id} movie={movie} />
+              ))}
           </tbody>
         </table>
       </div>
-
-      <MovieFooter totalMovies={movies.length} />
+      {Array.isArray(movies) && <MovieFooter totalMovies={movies.length} />}
     </div>
   );
 };

@@ -29,6 +29,7 @@ const AddMovieForm = (props) => {
     dispatch(addMovie(movie));
     push("/movies/");
   };
+
   return (
     <div className="bg-white rounded-md shadow flex-1">
       <form onSubmit={handleSubmit}>

@@ -1,20 +1,25 @@
-import React from "react";
-
+import React, { useEffect } from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
-
 import MovieList from "./components/MovieList";
 import Movie from "./components/Movie";
-
 import MovieHeader from "./components/MovieHeader";
-
 import AddMovieForm from "./components/AddMovieForm";
 import FavoriteMovieList from "./components/FavoriteMovieList";
 import { useSelector } from "react-redux";
+import { loadInitialFavs } from "./actions/favoritesActions";
+import { loadInitialMovies } from "./actions/movieActions";
+import { useDispatch } from "react-redux";
 
 const App = (props) => {
+  const dispatch = useDispatch();
   const displayFavorites = useSelector(
     (store) => store.favouriteReducer.displayFavorites
   );
+
+  useEffect(() => {
+    dispatch(loadInitialFavs());
+    dispatch(loadInitialMovies());
+  }, []);
 
   return (
     <div>

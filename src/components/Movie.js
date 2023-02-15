@@ -4,6 +4,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { deleteMovie } from "../actions/movieActions";
 import { addFavorite } from "../actions/favoritesActions";
+import { removeFavorite } from "../actions/favoritesActions";
 
 const Movie = (props) => {
   const { id } = useParams();
@@ -12,8 +13,10 @@ const Movie = (props) => {
   const movies = useSelector((store) => store.movieReducer.movies);
   const movie = movies.find((movie) => movie.id === Number(id));
   const favorites = useSelector((store) => store.favouriteReducer.favorites);
+
   const handleDelete = (id) => {
     dispatch(deleteMovie(id));
+    dispatch(handleRemove(id));
     push("/movies");
   };
 
@@ -21,6 +24,14 @@ const Movie = (props) => {
     dispatch(addFavorite(movie));
   };
 
+  const handleRemove = (id) => {
+    dispatch(removeFavorite(id));
+    push("/movies");
+  };
+  const isMovieInFav = favorites.filter((item) => item.id === movie.id)[0];
+
+  console.log("movies: ", movies);
+  console.log("favs: ", favorites);
   return (
     <div className="bg-white rounded-md shadow flex-1">
       <div className="p-5 pb-3 border-b border-zinc-200">
@@ -56,12 +67,21 @@ const Movie = (props) => {
         >
           Sil
         </button>
-        <button
-          className="myButton bg-blue-600 hover:bg-blue-500 "
-          onClick={() => handleAddFav(movie)}
-        >
-          Favorilere ekle
-        </button>
+        {isMovieInFav ? (
+          <button
+            className="myButton bg-blue-600 hover:bg-blue-500 "
+            onClick={() => handleRemove(movie.id)}
+          >
+            Favorilerden çıkar
+          </button>
+        ) : (
+          <button
+            className="myButton bg-blue-600 hover:bg-blue-500 "
+            onClick={() => handleAddFav(movie)}
+          >
+            Favorilere ekle
+          </button>
+        )}
       </div>
     </div>
   );
