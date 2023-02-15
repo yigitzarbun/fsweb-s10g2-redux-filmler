@@ -9,6 +9,8 @@ import { useSelector } from "react-redux";
 import { loadInitialFavs } from "./actions/favoritesActions";
 import { loadInitialMovies } from "./actions/movieActions";
 import { useDispatch } from "react-redux";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const App = (props) => {
   const dispatch = useDispatch();
@@ -23,6 +25,18 @@ const App = (props) => {
 
   return (
     <div>
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <nav className="bg-zinc-800 px-6 py-3">
         <h1 className="text-xl text-white">Redux Film Projesi</h1>
       </nav>

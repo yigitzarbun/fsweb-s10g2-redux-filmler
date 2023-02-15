@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { deleteMovie } from "../actions/movieActions";
 import { addFavorite } from "../actions/favoritesActions";
 import { removeFavorite } from "../actions/favoritesActions";
+import { toast } from "react-toastify";
 
 const Movie = (props) => {
   const { id } = useParams();
@@ -16,22 +17,24 @@ const Movie = (props) => {
 
   const handleDelete = (id) => {
     dispatch(deleteMovie(id));
+    toast("Film silindi");
+
     dispatch(handleRemove(id));
     push("/movies");
   };
 
   const handleAddFav = (movie) => {
     dispatch(addFavorite(movie));
+    toast("Favorilere eklendi");
   };
 
   const handleRemove = (id) => {
     dispatch(removeFavorite(id));
+    toast("Favorilerden çıkarıldı");
     push("/movies");
   };
   const isMovieInFav = favorites.filter((item) => item.id === movie.id)[0];
 
-  console.log("movies: ", movies);
-  console.log("favs: ", favorites);
   return (
     <div className="bg-white rounded-md shadow flex-1">
       <div className="p-5 pb-3 border-b border-zinc-200">

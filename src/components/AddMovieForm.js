@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { addMovie } from "./../actions/movieActions";
 import { useDispatch } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const AddMovieForm = (props) => {
   const { push } = useHistory();
@@ -27,6 +28,7 @@ const AddMovieForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addMovie(movie));
+    toast("Yeni film eklendi");
     push("/movies/");
   };
 
